@@ -15,13 +15,13 @@ const thoughtController = {
 
     // get one thought by id
     getThoughtById({ params }, res) {
-        Thought.findOne({ _id: params.thoughtId })
+        Thought.findOne({ _id: params.Id })
         .then(dbThoughtData => {
             if (!dbThoughtData) {
-                res.status(404).json({ message: 'No thought found with this id!' })
-                return
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
             }
-            res.json(dbThoughtData)
+            res.json(dbThoughtData);
         })
         .catch(err => {
             console.log(err)
@@ -34,17 +34,17 @@ const thoughtController = {
         Thought.create(body)
         .then(({ _id }) => {
             return User.findOneAndUpdate(
-                { _id: params.userId },
+                { _id: params.Id },
                 { $push: {thoughts: _id }},
                 { new: true }
             )
         })
         .then(dbThoughtData => {
             if (!dbThoughtData) {
-                res.status(404).json({ message: 'No thought found with this id!' })
-                return
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
             }
-            res.json(dbThoughtData)
+            res.json(dbThoughtData);
         })
         .catch(err => {
             console.log(err)
@@ -54,13 +54,13 @@ const thoughtController = {
 
     // update thought by id
     updateThought({ params, body }, res) {
-        Thought.findOneAndUpdate({ _id: params.thoughtId }, body, { new: true, runValidators: true })
+        Thought.findOneAndUpdate({ _id: params.Id }, body, { new: true, runValidators: true })
         .then(dbThoughtData => {
             if (!dbThoughtData) {
-                res.status(404).json({ message: 'No thought found with this id!' })
-                return
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
             }
-            res.json(dbThoughtData)
+            res.json(dbThoughtData);
         })
         .catch(err => {
             console.log(err)
@@ -73,20 +73,20 @@ const thoughtController = {
         Thought.findOneAndDelete({ _id: params.thoughtId })
         .then(deletedThought => {
             if (!deletedThought) {
-                return res.status(404).json({ message: 'No thought found with this id!' })
+                return res.status(404).json({ message: 'No thought found with this id!' });
             }
             return User.findOneAndUpdate(
                 { _id: params.userId },
                 { $pull: { thoughts: params.thoughtId }},
                 { new: true }
-            )
+            );
         })
         .then(dbThoughtData => {
             if (!dbThoughtData) {
-                res.status(404).json({ message: 'No thought found with this id!' })
-                return
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
             }
-            res.json(dbThoughtData)
+            res.json(dbThoughtData);
         })
         .catch(err => {
             console.log(err)
@@ -103,8 +103,8 @@ const thoughtController = {
         )
         .then(dbThoughtData => {
             if (!dbThoughtData) {
-                res.status(404).json({ message: 'No thought found with this id!' })
-                return
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
             }
             res.json(dbThoughtData);
         })
@@ -123,10 +123,10 @@ const thoughtController = {
         )
         .then(dbThoughtData => {
             if (!dbThoughtData) {
-                res.status(404).json({ message: 'No thought found with this id!' })
-                return
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
             }
-            res.json(dbThoughtData)
+            res.json(dbThoughtData);
         })
         .catch(err => {
             console.log(err)
