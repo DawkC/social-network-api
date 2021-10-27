@@ -33,3 +33,8 @@ Create Thought:
 
 Get User By Id:
 ![image](https://user-images.githubusercontent.com/83977228/139155509-0dfbb7d9-a760-46f7-b67f-2424e4a438fc.png)
+
+
+Add Friend:
+![image](https://user-images.githubusercontent.com/83977228/139156132-cd0c6fd6-ba10-496e-ab28-db78081fc9da.png)
+
